@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+*.sqlite3
+*.db
+*.log
+
+# Environment
+.env
+.venv/
+env/
+venv/
+ENV/
+*.env.*
+
+# VSCode
+.vscode/
+
+# Pytest
+.pytest_cache/
+.cache/
+
+# Coverage reports
+htmlcov/
+.tox/
+coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# MyPy
+.mypy_cache/
+
+# Docker
+*.tar
+**/__docker_cache__/
+docker-compose.override.yml
+# Ignore Docker named volumes (if bind-mounted to folders)
+**/volumes/
+**/data/
+
+# Build
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Poetry
+poetry.lock
+# pip
+pip-log.txt
+
+# IDEs
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+infra/

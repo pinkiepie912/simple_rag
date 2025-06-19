@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.0.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+    volumes:
+      - ./infra/esdata:/usr/share/elasticsearch/data
+    networks:
+      - elastic_net
+
+  redis:
+    image: redis:7.0.12
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - elastic_net
+
+ localstack:
+    image: localstack/localstack:3.4.0
+    container_name: localstack
+    environment:
+      - SERVICES=s3
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+      - DEFAULT_REGION=ap-northeast-2
+      - DEBUG=0
+    ports:
+      - "4566:4566"  # LocalStack Gateway (S3 포함)
+    volumes:
+      - ./infra/localstack:/var/lib/localstack
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - elastic_net
+
+networks:
+  elastic_net:
+    driver: bridge
+
