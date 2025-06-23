@@ -5,13 +5,21 @@ description = ""
 authors = [
     {name = "pinkiepie",email = "pinkipies0912@gmail.com"}
 ]
-readme = "README.md"
 requires-python = ">=3.12, <4.0"
 dependencies = [
     "llama-index (>=0.12.43,<0.13.0)",
     "elasticsearch (>=9.0.2,<10.0.0)",
-    "llama-index-readers-elasticsearch (>=0.3.1,<0.4.0)"
+    "llama-index-readers-elasticsearch (>=0.3.1,<0.4.0)",
+    "pydantic (>=2.11.7,<3.0.0)",
+    "fastapi (>=0.115.13,<0.116.0)",
+    "uvicorn[standard] (>=0.34.3,<0.35.0)",
+    "boto3 (>=1.38.41,<2.0.0)",
+    "pydantic-settings (>=2.10.0,<3.0.0)",
+    "dependency-injector (>=4.48.1,<5.0.0)",
 ]
+
+[tool.poetry]
+package-mode = false
 
 
 [build-system]
@@ -20,4 +28,5 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
+boto3-stubs = {extras = ["s3"], version = "^1.38.41"}
 
