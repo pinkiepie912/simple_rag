@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 from base.api_exception import APIException, api_exception_handler
+from clients.elasticsearch.schema import DocSchema
 from containers import Container
 from docs.router import router as docs_router
 
@@ -27,6 +28,8 @@ def create_app() -> FastAPI:
                     raise RuntimeError(
                         "Failed to connect to Elasticsearch after 10 attempts"
                     )
+        es_initializer = container.es_initializer()
+        es_initializer.create_idx(DocSchema)
         yield
         app.state.container.shutdown_resources()
 

@@ -3,7 +3,7 @@ from elasticsearch import Elasticsearch
 from dependency_injector import containers, providers
 
 from config.config import Config
-from clients.elasticsearch.es import ElasticsearchWriter
+from clients.elasticsearch.es import ElasticsearchInitializer
 from docs.services.doc_writer import DocWriter
 
 
@@ -16,8 +16,10 @@ class Container(containers.DeclarativeContainer):
     es_client = providers.Singleton(
         Elasticsearch, hosts=config.provided.ELASTICSEARCH_ENDPOINT
     )
-    es_writer = providers.Factory(
-        ElasticsearchWriter, es_client=es_client, index_name="documents"
+    es_initializer = providers.Factory(
+        ElasticsearchInitializer,
+        es_client=es_client,
+        index_name=config.provided.ELASTICSEARCH_INDEX,
     )
 
     # s3
