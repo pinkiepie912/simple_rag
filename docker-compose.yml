@@ -1,16 +1,45 @@
-version: '3.8'
-
 services:
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:9.0.2
-    container_name: elasticsearch
+  es_n1:
+    build:
+      context: .
+      dockerfile: Dockerfile_es
+    container_name: es_n1
     environment:
-      - discovery.type=single-node
+      - node.name=es_n1
+      - cluster.name=es_cluster
+      - discovery.seed_hosts=es_n1,es_n2
+      - cluster.initial_master_nodes=es_n1,es_n2
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     ports:
       - "9200:9200"
     volumes:
-      - ./infra/esdata:/usr/share/elasticsearch/data
+      - ./infra/esdata_n1:/usr/share/elasticsearch/data
+    networks:
+      - elastic_net
+
+  es_n2:
+    build:
+      context: .
+      dockerfile: Dockerfile_es
+    container_name: es_n2
+    environment:
+      - node.name=es_n2
+      - cluster.name=es_cluster
+      - discovery.seed_hosts=es_n1,es_n2
+      - cluster.initial_master_nodes=es_n1,es_n2
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./infra/esdata_n2:/usr/share/elasticsearch/data
     networks:
       - elastic_net
 
@@ -22,15 +51,15 @@ services:
     networks:
       - elastic_net
 
- localstack:
+  localstack:
     image: localstack/localstack:3.4.0
     container_name: localstack
     environment:
-      - SERVICES=s3
+      - SERVICES=s3,lambda
       - AWS_ACCESS_KEY_ID=test
       - AWS_SECRET_ACCESS_KEY=test
       - DEFAULT_REGION=ap-northeast-2
-      - DEBUG=0
+      - DEBUG=1
     ports:
       - "4566:4566"  # LocalStack Gateway (S3 포함)
     volumes:
