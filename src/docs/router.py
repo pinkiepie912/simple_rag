@@ -33,6 +33,7 @@ def get_upload_url(
     doc_writer: Annotated[DocWriter, Depends(Provide[Container.doc_writer])],
 ):
     presigned_url = doc_writer.get_upload_url(request.filename, request.size)
+
     return GetUploadUrlResponse(
         presignedUrl=presigned_url.url,
         metadata=GetUploadUrlMetadata(doc_id=presigned_url.doc_id),
