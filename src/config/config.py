@@ -29,3 +29,6 @@ class Config(BaseSettings):
         ]
     )
     DOC_SIZE_LIMIT: int = Field(default=20 * 1024 * 1024)
+
+    CELERY_BROKER_URL: str = Field(default="redis://localhost:6379/0")
+    CELERY_BACKEND_URL: str = Field(default="redis://localhost:6379/1")

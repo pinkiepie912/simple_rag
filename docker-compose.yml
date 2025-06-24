@@ -5,7 +5,6 @@ services:
       dockerfile: Dockerfile
     container_name: web
     environment:
-      - NODE_ENV=development
       - PORT=8000
     env_file:
       - .env
@@ -20,7 +19,25 @@ services:
       - redis
       - localstack
     networks:
-      - elastic_net
+      - local_net 
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: worker
+    command: celery -A src.celery_app worker --loglevel=info
+    volumes:
+      - ./src:/app/src
+    env_file:
+      - .env
+    depends_on:
+      - es_n1
+      - es_n2
+      - redis
+      - localstack
+    networks:
+      - local_net 
 
   es_n1:
     build:
@@ -43,7 +60,7 @@ services:
     volumes:
       - ./infra/esdata_n1:/usr/share/elasticsearch/data
     networks:
-      - elastic_net
+      - local_net
 
   es_n2:
     build:
@@ -64,7 +81,7 @@ services:
     volumes:
       - ./infra/esdata_n2:/usr/share/elasticsearch/data
     networks:
-      - elastic_net
+      - local_net
 
   redis:
     image: redis:7.0.12
@@ -72,13 +89,13 @@ services:
     ports:
       - "6379:6379"
     networks:
-      - elastic_net
+      - local_net 
 
   localstack:
     image: localstack/localstack:3.4.0
     container_name: localstack
     environment:
-      - SERVICES=s3,lambda
+      - SERVICES=s3,lambda,iam,sts
       - AWS_ACCESS_KEY_ID=test
       - AWS_SECRET_ACCESS_KEY=test
       - DEFAULT_REGION=ap-northeast-2
@@ -86,12 +103,14 @@ services:
     ports:
       - "4566:4566"  # LocalStack Gateway (S3 포함)
     volumes:
+      - ./lambda_handlers/index_doc/init-localstack.sh:/etc/localstack/init/ready.d/init-aws.sh
       - ./infra/localstack:/var/lib/localstack
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./lambda_handlers/lambda.zip:/tmp/lambda.zip
     networks:
-      - elastic_net
+      - local_net
 
 networks:
-  elastic_net:
+  local_net:
     driver: bridge
 
