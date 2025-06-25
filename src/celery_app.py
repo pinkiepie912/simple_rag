@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
+
 from celery import Celery
+from celery.signals import worker_process_init, worker_process_shutdown
 
 from containers import Container
 
@@ -21,11 +23,15 @@ def _find_task_modules() -> list[str]:
     return task_modules
 
 
+class CeleryApp(Celery):
+    container: Container
+
+
 def create_celery_app() -> Celery:
     container = Container()
     config = container.config()
 
-    celery_app = Celery(
+    celery_app = CeleryApp(
         "tasks",
         broker=config.CELERY_BROKER_URL,
         backend=config.CELERY_BACKEND_URL,
@@ -34,12 +40,22 @@ def create_celery_app() -> Celery:
 
     celery_app.conf.update(
         task_track_started=True,
-        task_serializer="json",
-        accept_content=["json"],
-        result_serializer="json",
+        task_serializer="msgpack",
+        accept_content=["msgpack", "json"],
+        result_serializer="msgpack",
         timezone="Asia/Seoul",
         enable_utc=False,
     )
+
+    celery_app.container = container
+
+    @worker_process_init.connect(sender=celery_app)
+    def init_worker(**kwargs):
+        celery_app.container.es_client()
+
+    @worker_process_shutdown.connect(sender=celery_app)
+    def shutdown_worker(**kwargs):
+        celery_app.container.shutdown_resources()
 
     return celery_app
 
