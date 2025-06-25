@@ -1,7 +1,7 @@
 import time
 from contextlib import asynccontextmanager
 
-from elasticsearch import Elasticsearch, ConnectionError as ESConnectionError
+from elasticsearch import AsyncElasticsearch, ConnectionError as ESConnectionError
 from fastapi import FastAPI
 from pydantic import BaseModel
 
@@ -16,10 +16,11 @@ def create_app() -> FastAPI:
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
-        es_client: Elasticsearch = container.es_client()
+        es: AsyncElasticsearch = container.es()
+        # Connect to Elasticsearch with retries
         for attempt in range(10):
             try:
-                es_client.info()
+                await es.info()
                 break
             except ESConnectionError as e:
                 print(f"Elasticsearch connection error on attempt {attempt + 1}: {e}")
@@ -28,9 +29,13 @@ def create_app() -> FastAPI:
                     raise RuntimeError(
                         "Failed to connect to Elasticsearch after 10 attempts"
                     )
-        es_initializer = container.es_initializer()
-        es_initializer.create_idx(DocSchema)
+
+        # Create Elasticsearch index
+        es_client = container.es_client()
+        await es_client.create_idx(DocSchema, container.config().ELASTICSEARCH_INDEX)
+
         yield
+
         app.state.container.shutdown_resources()
 
     app = FastAPI(lifespan=lifespan)

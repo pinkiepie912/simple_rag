@@ -1,4 +1,7 @@
-from typing import Type
+from typing import Type, List
+
+from elasticsearch import AsyncElasticsearch
+from elasticsearch.helpers import async_bulk
 
 from clients.elasticsearch.schema import DocSchema
 
@@ -7,25 +10,37 @@ FILTER_NAME = "kr_filter"
 ANALYZER_NAME = "kr_analyzer"
 
 
-class ElasticsearchInitializer:
-    def __init__(self, es_client, index_name):
+class EsClient:
+    def __init__(self, es_client: AsyncElasticsearch):
         self.es_client = es_client
-        self.index_name = index_name
 
-    def create_idx(self, schema: Type[DocSchema], clear=False):
-        idx_exists = self.es_client.indices.exists(index=self.index_name)
+    async def create_idx(self, schema: Type[DocSchema], index_name: str, clear=False):
+        idx_exists = await self.es_client.indices.exists(index=index_name)
         if idx_exists and not clear:
             return
 
         if idx_exists:
-            self.es_client.indices.delete(index=self.index_name)
+            await self.es_client.indices.delete(index=index_name)
 
-        self.es_client.indices.create(
-            index=self.index_name,
+        await self.es_client.indices.create(
+            index=index_name,
             body={
                 "settings": {"analysis": self._get_settings()},
                 "mappings": {"properties": schema.create_map(ANALYZER_NAME)},
             },
+        )
+
+    async def index_docs(self, docs: List[DocSchema], index_name: str):
+        await async_bulk(
+            client=self.es_client,
+            actions=[
+                {
+                    "_source": doc.model_dump(),
+                }
+                for doc in docs
+            ],
+            index=index_name,
+            refresh=True,
         )
 
     def _get_settings(self) -> dict:
