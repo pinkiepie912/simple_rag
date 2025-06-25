@@ -1,10 +1,10 @@
 from pydantic import BaseModel, ConfigDict
 from pydantic.alias_generators import to_camel
 
-__all__ = ["ReqResBaseModel"]
+__all__ = ["SnakeToCamelBaseModel"]
 
 
-class ReqResBaseModel(BaseModel):
+class SnakeToCamelBaseModel(BaseModel):
 
     model_config = ConfigDict(
         alias_generator=to_camel,

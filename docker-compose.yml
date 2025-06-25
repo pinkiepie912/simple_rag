@@ -26,7 +26,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: worker
-    command: celery -A src.celery_app worker --loglevel=info
+    command: celery -A src.celery_app worker -c 2 --loglevel=info
     volumes:
       - ./src:/app/src
     env_file:
@@ -38,6 +38,14 @@ services:
       - localstack
     networks:
       - local_net 
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 128M 
+        reservations:
+          cpus: '0.25'
+          memory: 64M
 
   es_n1:
     build:
@@ -101,7 +109,7 @@ services:
       - DEFAULT_REGION=ap-northeast-2
       - DEBUG=1
     ports:
-      - "4566:4566"  # LocalStack Gateway (S3 포함)
+      - "4566:4566"
     volumes:
       - ./lambda_handlers/index_doc/init-localstack.sh:/etc/localstack/init/ready.d/init-aws.sh
       - ./infra/localstack:/var/lib/localstack

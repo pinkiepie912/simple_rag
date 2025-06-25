@@ -3,9 +3,9 @@ from dependency_injector.wiring import Provide, inject
 from fastapi import APIRouter, Depends
 
 from base.openapi import generate_responses
+from clients.s3.exceptions import FailToGeneratePresignedUrlError
 from containers import Container
 from docs.exceptions import (
-    FailToGeneratePresignedUrlError,
     NotAllowedExtensionError,
 )
 from .dtos.docs_dto import (

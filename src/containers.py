@@ -1,25 +1,26 @@
 import boto3
-from elasticsearch import Elasticsearch
+from elasticsearch import AsyncElasticsearch
 from dependency_injector import containers, providers
 
 from config.config import Config
-from clients.elasticsearch.es import ElasticsearchInitializer
+from clients.elasticsearch.es import EsClient
 from docs.services.doc_writer import DocWriter
 
 
 class Container(containers.DeclarativeContainer):
-    wiring_config = containers.WiringConfiguration(modules=["docs.router"])
+    wiring_config = containers.WiringConfiguration(
+        modules=["docs.router", "docs.tasks"]
+    )
 
     config = providers.Singleton(Config)
 
     # Elasticsearch
-    es_client = providers.Singleton(
-        Elasticsearch, hosts=config.provided.ELASTICSEARCH_ENDPOINT
+    es = providers.Singleton(
+        AsyncElasticsearch, hosts=config.provided.ELASTICSEARCH_ENDPOINT
     )
-    es_initializer = providers.Factory(
-        ElasticsearchInitializer,
-        es_client=es_client,
-        index_name=config.provided.ELASTICSEARCH_INDEX,
+    es_client = providers.Factory(
+        EsClient,
+        es_client=es,
     )
 
     # s3
@@ -36,6 +37,7 @@ class Container(containers.DeclarativeContainer):
     doc_writer = providers.Factory(
         DocWriter,
         s3_client=s3_client,
+        es_client=es_client,
         bucket_name=config.provided.S3_DOCS_BUCKET,
         allowed_extensions=config.provided.ALLOWED_EXTENSIONS,
         doc_size_limit=config.provided.DOC_SIZE_LIMIT,

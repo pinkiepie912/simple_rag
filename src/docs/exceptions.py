@@ -15,11 +15,3 @@ class DocumentSizeLimitExceededError(APIException):
     detail = "Document size limit exceeded"
     description = "문서 크기가 제한을 초과했습니다."
     example = {"code": code, "detail": detail}
-
-
-class FailToGeneratePresignedUrlError(APIException):
-    status_code = 500
-    code = "PRESIGNED_URL_GENERATION_FAILED"
-    detail = "Failed to generate presigned URL"
-    description = "파일 업로드 URL 생성에 실패했습니다."
-    example = {"code": code, "detail": detail}
