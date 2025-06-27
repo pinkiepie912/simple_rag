@@ -12,13 +12,17 @@ from llama_index.readers.file import (
     HWPReader,
 )
 from llama_index.core.readers.json import JSONReader
+from sqlalchemy import update
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from clients.elasticsearch.es import EsClient
 from clients.s3.dto import PresignedUrlMetadata
 from clients.s3.s3 import S3Client
 from clients.elasticsearch.schema import DocMetadata, DocSchema
+from db.db import WriteSessionManager
 from docs.dtos.docs_dto import IndexDocsParams, PresignedUrlDto
 from docs.exceptions import DocumentSizeLimitExceededError, NotAllowedExtensionError
+from docs.models.doc_model import DocStatus, Docs
 
 __all__ = ["DocWriter"]
 
@@ -28,18 +32,24 @@ class DocWriter:
         self,
         s3_client: S3Client,
         es_client: EsClient,
+        write_session_manager: WriteSessionManager,
         bucket_name: str,
         allowed_extensions: List[str],
         doc_size_limit: int,
     ):
         self.s3_client = s3_client
         self.es_client = es_client
+        self.write_session_manager = write_session_manager
         self.bucket_name = bucket_name
         self.allowed_extensions = allowed_extensions
         self.doc_size_limit = doc_size_limit
 
-    def get_upload_url(
-        self, filename: str, size_byte: int, expire_sec=300, key_prefix="docs"
+    async def get_upload_url(
+        self,
+        filename: str,
+        size_byte: int,
+        expire_sec=300,
+        key_prefix="docs",
     ) -> PresignedUrlDto:
         ext = filename.split(".")[-1]
         self._validate_extension(ext)
@@ -57,7 +67,14 @@ class DocWriter:
             expire_sec=expire_sec,
         )
 
-        # TODO: store doc_id and key in mysql
+        new_doc = Docs.of(
+            id=uuid.UUID(doc_id),
+            name=filename,
+            size=size_byte,
+            extension=ext,
+        )
+        async with self.write_session_manager as write_session:
+            write_session.add(new_doc)
 
         return PresignedUrlDto(url=presigned_url, doc_id=doc_id)
 
@@ -76,8 +93,25 @@ class DocWriter:
         ext = tmp_path.suffix.lower()
         reader = self._get_reader(ext)
 
-        # Read and Split document
-        document = reader.load_data(tmp_path)
+        # Read docs
+        try:
+            document = reader.load_data(tmp_path)
+        except Exception:
+            stmt = (
+                update(Docs)
+                .where(Docs.id == doc_id)
+                .values(status=DocStatus.FILE_ERROR.value)
+            )
+
+            async with self.write_session_manager as write_session:
+                await write_session.execute(stmt)
+            return
+        finally:
+            # Delete temporary file if it exists
+            if tmp_path.exists():
+                tmp_path.unlink()
+
+        # Split document into chunks
         sentence_splitter = SentenceSplitter(
             chunk_size=params.chunk_size,
             chunk_overlap=int(params.chunk_size * max(params.chunk_overlap_ratio, 0)),
@@ -98,9 +132,12 @@ class DocWriter:
         # Write to Elasticsearch
         await self.es_client.index_docs(splitted_nodes, params.index_name)
 
-        # Delete temporary file if it exists
-        if tmp_path.exists():
-            tmp_path.unlink()
+        # Update document status
+        stmt = (
+            update(Docs).where(Docs.id == doc_id).values(status=DocStatus.INDEXED.value)
+        )
+        async with self.write_session_manager as write_session:
+            await write_session.execute(stmt)
 
     def _get_reader(self, ext: str) -> BaseReader:
         self._validate_extension(ext)
