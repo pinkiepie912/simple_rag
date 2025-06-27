@@ -96,4 +96,5 @@ class Container(containers.DeclarativeContainer):
         allowed_extensions=config.DOCUMENT.ALLOWED_EXTENSIONS,
         doc_size_limit=config.DOCUMENT.DOC_SIZE_LIMIT,
         write_session_manager=write_session_manager,
+        doc_index_name=config.ELASTICSEARCH.INDEX,
     )

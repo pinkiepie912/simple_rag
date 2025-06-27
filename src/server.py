@@ -18,6 +18,7 @@ def create_app() -> FastAPI:
     container = Container()
 
     container.config.from_pydantic(config)
+    container.wire(modules=["docs.router"])
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):

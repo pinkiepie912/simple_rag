@@ -29,15 +29,19 @@ class CeleryApp(Celery):
 
 
 def create_celery_app() -> Celery:
-    container = Container()
     config = Config()
+    container = Container()
+
     container.config.from_pydantic(config)
+
+    tasks_to_wire = _find_task_modules()
+    container.wire(modules=tasks_to_wire)
 
     celery_app = CeleryApp(
         "tasks",
         broker=config.CELERY.BROKER_URL,
         backend=config.CELERY.BACKEND_URL,
-        include=_find_task_modules(),
+        include=tasks_to_wire,
     )
 
     celery_app.conf.update(
