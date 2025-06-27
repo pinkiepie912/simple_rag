@@ -1,0 +1,25 @@
+[project]
+name = "lambda"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "pinkiepie",email = "pinkipies0912@gmail.com"}
+]
+requires-python = ">=3.12,<4.0"
+dependencies = [
+    "msgpack (>=1.1.1,<2.0.0)",
+    "celery (>=5.5.3,<6.0.0)",
+    "redis (>=6.2.0,<7.0.0)",
+    "pymysql (>=1.1.1,<2.0.0)",
+]
+
+[tool.poetry]
+package-mode = false
+
+
+[tool.poetry.group.dev.dependencies]
+boto3 = "^1.38.42"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

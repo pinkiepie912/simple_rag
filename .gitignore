@@ -50,8 +50,6 @@ dist/
 *.egg-info/
 .eggs/
 
-# Poetry
-poetry.lock
 # pip
 pip-log.txt
 
