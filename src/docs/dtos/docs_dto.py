@@ -37,7 +37,6 @@ class PresignedUrlDto(BaseModel):
 
 
 class IndexDocsParams(BaseModel):
-    index_name: str
     key: str
     chunk_size: int = Field(default=1024)
     chunk_overlap_ratio: float = Field(default=0.2)
