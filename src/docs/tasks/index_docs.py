@@ -20,5 +20,5 @@ async def index_docs(
     doc_writer: DocWriter = Provide[Container.doc_writer],
     config: Config = Provide[Container.config],
 ) -> None:
-    params = IndexDocsParams(index_name=config.S3_DOCS_BUCKET, key=req.key)
+    params = IndexDocsParams(index_name=config.S3.DOCS_BUCKET, key=req.key)
     await doc_writer.index_docs(params)

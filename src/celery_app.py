@@ -4,6 +4,7 @@ from pathlib import Path
 from celery import Celery
 from celery.signals import worker_process_init, worker_process_shutdown
 
+from config.config import Config
 from containers import Container
 
 
@@ -29,12 +30,13 @@ class CeleryApp(Celery):
 
 def create_celery_app() -> Celery:
     container = Container()
-    config = container.config()
+    config = Config()
+    container.config.from_pydantic(config)
 
     celery_app = CeleryApp(
         "tasks",
-        broker=config.CELERY_BROKER_URL,
-        backend=config.CELERY_BACKEND_URL,
+        broker=config.CELERY.BROKER_URL,
+        backend=config.CELERY.BACKEND_URL,
         include=_find_task_modules(),
     )
 
