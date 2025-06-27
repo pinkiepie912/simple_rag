@@ -27,7 +27,13 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: worker
-    command: celery -A src.celery_app worker -c 2 --loglevel=info
+    command: >
+      watchmedo auto-restart
+        --directory='.'
+        --pattern='*.py'
+        --recursive
+        --
+        celery -A src.celery_app worker -c 2 --loglevel=info --pool=gevent
     volumes:
       - ./src:/app/src
     env_file:
