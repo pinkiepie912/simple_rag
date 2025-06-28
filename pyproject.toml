@@ -21,6 +21,7 @@ dependencies = [
     "sqlalchemy[asyncio] (>=2.0.41,<3.0.0)",
     "aiomysql (>=0.2.0,<0.3.0)",
     "gevent (>=25.5.1,<26.0.0)",
+    "pymysql (>=1.1.1,<2.0.0)",
 ]
 
 [tool.poetry]
