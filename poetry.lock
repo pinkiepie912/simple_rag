@@ -1890,21 +1890,6 @@ deprecated = ">=1.2.18"
 pydantic = ">=2.11.5"
 
 [[package]]
-name = "llama-index-readers-elasticsearch"
-version = "0.3.1"
-description = "llama-index readers elasticsearch integration"
-optional = false
-python-versions = "<4.0,>=3.9"
-groups = ["main"]
-files = [
-    {file = "llama_index_readers_elasticsearch-0.3.1-py3-none-any.whl", hash = "sha256:394def23c9f37733e9d0ad98d8d2dc4e4a06a12e5b58d8be56d79f052dc3cd25"},
-    {file = "llama_index_readers_elasticsearch-0.3.1.tar.gz", hash = "sha256:ba806ad1f3220c3988b5cb074471ab723db3ca351bcbff6fa4b788745d2021a4"},
-]
-
-[package.dependencies]
-llama-index-core = ">=0.12.0,<0.13.0"
-
-[[package]]
 name = "llama-index-readers-file"
 version = "0.4.9"
 description = "llama-index readers file integration"
@@ -4180,4 +4165,4 @@ testing = ["coverage[toml]", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12, <4.0"
-content-hash = "7a2327af241a4e04996413de4822c17aa7d452ba712f61b4bfa323b10ee736a4"
+content-hash = "49e44940be1919bdd76003c4a555413ce85aef482afe29a07ddb86f2b30976c5"
