@@ -43,6 +43,39 @@ class EsClient:
             refresh=True,
         )
 
+    async def search_docs(self, index_name: str, doc_id: str, query: str, size: int = 10) -> List[DocSchema]:
+        res = await self.es_client.search(
+            index=index_name,
+            body={
+                "query": {
+                    "bool": {
+                        "must": [
+                            {
+                                "match": {
+                                    "content": {
+                                        "query": query,
+                                        "analyzer": ANALYZER_NAME,
+                                    }
+                                }
+                            
+                            },
+                        ],
+                        "filter": [
+                                {
+                                "term": {
+                                    "doc_id": doc_id,
+                                }
+                            }
+                        ]
+                    },
+                },
+                "size": size,
+            }
+        )
+
+        hits = res.get("hits", {}).get("hits", [])
+        return [DocSchema(**hit["_source"]) for hit in hits]
+
     def _get_settings(self) -> dict:
         return {
             "tokenizer": {
