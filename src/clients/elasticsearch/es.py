@@ -1,9 +1,10 @@
 from typing import Type, List
 
 from elasticsearch import AsyncElasticsearch
-from elasticsearch.helpers import async_bulk
 
 from clients.elasticsearch.schema import DocSchema
+
+__all__ = ["EsClient"]
 
 TOKENIZER_NAME = "kr_tokenizer"
 FILTER_NAME = "kr_filter"
@@ -30,20 +31,9 @@ class EsClient:
             },
         )
 
-    async def index_docs(self, docs: List[DocSchema], index_name: str):
-        await async_bulk(
-            client=self.es_client,
-            actions=[
-                {
-                    "_source": doc.model_dump(),
-                }
-                for doc in docs
-            ],
-            index=index_name,
-            refresh=True,
-        )
-
-    async def search_docs(self, index_name: str, doc_id: str, query: str, size: int = 10) -> List[DocSchema]:
+    async def search_docs(
+        self, index_name: str, doc_id: str, query: str, size: int = 10
+    ) -> List[DocSchema]:
         res = await self.es_client.search(
             index=index_name,
             body={
@@ -57,20 +47,19 @@ class EsClient:
                                         "analyzer": ANALYZER_NAME,
                                     }
                                 }
-                            
                             },
                         ],
                         "filter": [
-                                {
+                            {
                                 "term": {
                                     "doc_id": doc_id,
                                 }
                             }
-                        ]
+                        ],
                     },
                 },
                 "size": size,
-            }
+            },
         )
 
         hits = res.get("hits", {}).get("hits", [])

@@ -17,7 +17,7 @@ from .dtos.docs_dto import (
     SearchDocsRequest,
     SearchDocsResponse,
 )
-from .services.doc_writer import DocWriter
+from .services.doc_uploader import DocUploader
 
 
 router = APIRouter(prefix="/api/v1/docs", tags=["docs"])
@@ -34,7 +34,7 @@ router = APIRouter(prefix="/api/v1/docs", tags=["docs"])
 @inject
 async def get_upload_url(
     request: GetUploadUrlRequest,
-    doc_writer: Annotated[DocWriter, Depends(Provide[Container.doc_writer])],
+    doc_writer: Annotated[DocUploader, Depends(Provide[Container.doc_uploader])],
 ) -> GetUploadUrlResponse:
     presigned_url = await doc_writer.get_upload_url(request.filename, request.size)
 

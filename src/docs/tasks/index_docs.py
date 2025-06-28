@@ -1,12 +1,10 @@
-import asyncio
-
 from celery import shared_task
 from dependency_injector.wiring import Provide, inject
 from pydantic import BaseModel
 
-from containers import Container
+from celery_containers import CeleryContainer
 from docs.dtos.docs_dto import IndexDocsParams
-from docs.services.doc_writer import DocWriter
+from docs.tasks.services.doc_writer import DocWriter
 
 
 class _IndexDocsRequest(BaseModel):
@@ -18,8 +16,9 @@ class _IndexDocsRequest(BaseModel):
 @inject
 def index_docs(
     req: dict,
-    doc_writer: DocWriter = Provide[Container.doc_writer],
+    doc_writer: DocWriter = Provide[CeleryContainer.doc_writer],
 ) -> None:
     request = _IndexDocsRequest(**req)
     params = IndexDocsParams(key=request.key)
-    asyncio.run(doc_writer.index_docs(params))
+
+    doc_writer.index_docs(params)

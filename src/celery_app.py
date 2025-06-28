@@ -4,8 +4,8 @@ from pathlib import Path
 from celery import Celery
 from celery.signals import worker_process_init, worker_process_shutdown
 
+from celery_containers import CeleryContainer
 from config.config import Config
-from containers import Container
 
 
 def _find_task_modules() -> list[str]:
@@ -25,12 +25,12 @@ def _find_task_modules() -> list[str]:
 
 
 class CeleryApp(Celery):
-    container: Container
+    container: CeleryContainer
 
 
 def create_celery_app() -> Celery:
     config = Config()
-    container = Container()
+    container = CeleryContainer()
 
     container.config.from_pydantic(config)
 

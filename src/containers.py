@@ -5,8 +5,9 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 
 from clients.elasticsearch.es import EsClient
 from clients.s3.s3 import S3Client
+from docs.repositories.doc_repository import DocRepository
 from docs.services.doc_reader import DocReader
-from docs.services.doc_writer import DocWriter
+from docs.services.doc_uploader import DocUploader
 from db.db import ReadSessionManager, WriteSessionManager
 
 __all__ = ["Container"]
@@ -14,10 +15,6 @@ __all__ = ["Container"]
 
 class Container(containers.DeclarativeContainer):
     config = providers.Configuration()
-
-    wiring_config = containers.WiringConfiguration(
-        modules=["docs.router", "docs.tasks"]
-    )
 
     # SqlAlchemy
     _write_db_engine = providers.Singleton(
@@ -91,18 +88,22 @@ class Container(containers.DeclarativeContainer):
     )
 
     # docs
-    doc_writer = providers.Factory(
-        DocWriter,
+    doc_repository = providers.Factory(DocRepository)
+
+    doc_uploader = providers.Factory(
+        DocUploader,
         s3_client=s3_client,
         es_client=es_client,
+        write_session_manager=write_session_manager,
+        repo=doc_repository,
         bucket_name=config.S3.DOCS_BUCKET,
         allowed_extensions=config.DOCUMENT.ALLOWED_EXTENSIONS,
         doc_size_limit=config.DOCUMENT.DOC_SIZE_LIMIT,
-        write_session_manager=write_session_manager,
         doc_index_name=config.ELASTICSEARCH.INDEX,
     )
     doc_reader = providers.Factory(
         DocReader,
         es_client=es_client,
+        repo=doc_repository,
         doc_index_name=config.ELASTICSEARCH.INDEX,
     )

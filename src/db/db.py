@@ -3,10 +3,16 @@ from pathlib import Path
 from typing import Optional
 
 from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, async_sessionmaker
+from sqlalchemy.orm import Session, sessionmaker
 
 from .model import Base
 
-__all__ = ["ReadSessionManager", "WriteSessionManager", "create_tables"]
+__all__ = [
+    "ReadSessionManager",
+    "WriteSessionManager",
+    "WriteSessionSyncManager",
+    "create_tables",
+]
 
 
 class ReadSessionManager:
@@ -53,6 +59,31 @@ class WriteSessionManager:
                 await self._session.commit()
         finally:
             await self._session.close()
+            self._session = None
+
+
+class WriteSessionSyncManager:
+    def __init__(self, session_maker: sessionmaker[Session]):
+        self._session_maker = session_maker
+        self._session: Optional[Session] = None
+
+    def __enter__(self) -> Session:
+        if self._session is None:
+            self._session = self._session_maker()
+        return self._session
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        if not self._session:
+            return
+
+        try:
+            if exc_type:
+                self._session.rollback()
+                return False
+            else:
+                self._session.commit()
+        finally:
+            self._session.close()
             self._session = None
 
 
