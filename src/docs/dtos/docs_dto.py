@@ -1,3 +1,7 @@
+from __future__ import annotations
+
+import uuid
+
 from pydantic import BaseModel, Field
 from base.dto import SnakeToCamelBaseModel
 
@@ -5,6 +9,10 @@ __all__ = [
     "GetUploadUrlRequest",
     "GetUploadUrlResponse",
     "GetUploadUrlMetadata",
+    "PresignedUrlDto",
+    "IndexDocsParams",
+    "SearchDocsRequest",
+    "SearchDocs",
 ]
 
 
@@ -36,7 +44,28 @@ class PresignedUrlDto(BaseModel):
     doc_id: str
 
 
-class IndexDocsParams(BaseModel):
+class IndexDocsParams(SnakeToCamelBaseModel):
     key: str
     chunk_size: int = Field(default=1024)
     chunk_overlap_ratio: float = Field(default=0.2)
+
+
+class SearchDocsRequest(SnakeToCamelBaseModel):
+    doc_id: str
+    question: str
+
+
+class SearchDoc(SnakeToCamelBaseModel):
+    doc_id: uuid.UUID
+    content: str
+
+    @classmethod
+    def of(cls, doc_id: uuid.UUID, content: str) -> SearchDoc:
+        return cls(doc_id=doc_id, content=content)
+
+class SearchDocsResponse(SnakeToCamelBaseModel):
+    docs: list[SearchDoc]
+
+    @classmethod
+    def of(cls, docs: list[SearchDoc]) -> SearchDocsResponse:
+        return cls(docs=docs)

@@ -5,8 +5,11 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 
 from clients.elasticsearch.es import EsClient
 from clients.s3.s3 import S3Client
+from docs.services.doc_reader import DocReader
 from docs.services.doc_writer import DocWriter
 from db.db import ReadSessionManager, WriteSessionManager
+
+__all__ = ["Container"]
 
 
 class Container(containers.DeclarativeContainer):
@@ -96,5 +99,10 @@ class Container(containers.DeclarativeContainer):
         allowed_extensions=config.DOCUMENT.ALLOWED_EXTENSIONS,
         doc_size_limit=config.DOCUMENT.DOC_SIZE_LIMIT,
         write_session_manager=write_session_manager,
+        doc_index_name=config.ELASTICSEARCH.INDEX,
+    )
+    doc_reader = providers.Factory(
+        DocReader,
+        es_client=es_client,
         doc_index_name=config.ELASTICSEARCH.INDEX,
     )
