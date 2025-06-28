@@ -14,8 +14,8 @@ class DocSchema(BaseModel):
     content: str = Field(..., description="Content of the document")
     metadata: DocMetadata
 
-    @classmethod
-    def create_map(cls, analyzer: str):
+    @staticmethod
+    def create_map(analyzer: str):
         return {
             "doc_id": {"type": "keyword"},
             "order": {"type": "integer"},

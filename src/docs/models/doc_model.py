@@ -39,9 +39,9 @@ class Docs(Base):
         DateTime(timezone=True), default=get_utc_now, onupdate=get_utc_now
     )
 
-    @classmethod
-    def of(cls, id: UUID, name: str, size: int, extension: str) -> Docs:
-        return cls(
+    @staticmethod
+    def of(id: UUID, name: str, size: int, extension: str) -> Docs:
+        return Docs(
             id=id,
             name=name,
             size=size,
