@@ -42,3 +42,11 @@ pytest-cov = "^6.2.1"
 
 [tool.black]
 line-length = 88
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_functions = ["test_*"]
+addopts = "-v -rA --strict-markers --cov=src --cov-report=term-missing"
