@@ -74,10 +74,6 @@ class SearchDocsResponse(SnakeToCamelBaseModel):
         return SearchDocsResponse(docs=docs)
 
 
-class GetDocRequest(SnakeToCamelBaseModel):
-    doc_id: uuid.UUID
-
-
 class DocResponse(SnakeToCamelBaseModel):
     doc_id: uuid.UUID
     name: str
