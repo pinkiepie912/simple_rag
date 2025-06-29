@@ -44,7 +44,7 @@ def lambda_handler(event, _):
         with connection.cursor() as cursor:
             # Update status to "uploaded" for the given doc_id
             sql = "UPDATE docs SET status = %s WHERE id = %s"
-            cursor.execute(sql, ("uploaded", doc_id))
+            cursor.execute(sql, ("UPLOADED", doc_id))
             connection.commit()
     finally:
         connection.close()
