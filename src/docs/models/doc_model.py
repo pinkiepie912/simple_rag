@@ -4,7 +4,7 @@ from datetime import datetime
 from enum import Enum
 from uuid import UUID
 
-from sqlalchemy import DateTime, String
+from sqlalchemy import DateTime, String, Enum as SAEnum
 from sqlalchemy.orm import Mapped, mapped_column
 
 from db.model import Base
@@ -36,9 +36,12 @@ class Docs(Base):
     name: Mapped[str] = mapped_column(String(64), nullable=False)
     size: Mapped[int] = mapped_column(nullable=False, comment="bytes")
     extension: Mapped[str] = mapped_column(String(16), nullable=False)
-    status: Mapped[str] = mapped_column(
-        String(32), nullable=False, default=DocStatus.UPLOAD_REQUESTED.value
+    status: Mapped[DocStatus] = mapped_column(
+        SAEnum(DocStatus, native_enum=False, length=32), 
+        default=DocStatus.UPLOAD_REQUESTED, 
+        nullable=False,
     )
+
     bucket: Mapped[str] = mapped_column(String(64), nullable=False)
     key: Mapped[str] = mapped_column(String(64), nullable=False)
     created_at: Mapped[datetime] = mapped_column(

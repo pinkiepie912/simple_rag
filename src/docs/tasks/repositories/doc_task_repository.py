@@ -13,7 +13,7 @@ class DocTaskRepository:
     def update_status(
         self, session: Session, doc_ids: List[uuid.UUID], status: DocStatus
     ) -> None:
-        stmt = update(Docs).where(Docs.id.in_(doc_ids)).values(status=status.value)
+        stmt = update(Docs).where(Docs.id.in_(doc_ids)).values(status=status)
         session.execute(stmt)
 
     def fetch_docs_by_status(
@@ -24,10 +24,9 @@ class DocTaskRepository:
         offset: int = 0,
         limit: int = 100,
     ) -> Sequence[Docs]:
-        status_values = [row.value for row in statuses]
         stmt = (
             select(Docs)
-            .where(and_(Docs.created_at <= cutoff_time, Docs.status.in_(status_values)))
+            .where(and_(Docs.created_at <= cutoff_time, Docs.status.in_(statuses)))
             .order_by(Docs.created_at.desc())
             .limit(limit)
             .offset(offset)
@@ -41,11 +40,10 @@ class DocTaskRepository:
         session: Session,
         cutoff_time: datetime,
     ) -> int:
-        status_values = [row.value for row in statuses]
         stmt = (
             select(func.count(1))
             .select_from(Docs)
-            .where(and_(Docs.created_at <= cutoff_time, Docs.status.in_(status_values)))
+            .where(and_(Docs.created_at <= cutoff_time, Docs.status.in_(statuses)))
         )
 
         return session.execute(stmt).scalar() or 0
