@@ -104,6 +104,7 @@ class Container(containers.DeclarativeContainer):
     doc_reader = providers.Factory(
         DocReader,
         es_client=es_client,
+        session_manager=read_session_manager,
         repo=doc_repository,
         doc_index_name=config.ELASTICSEARCH.INDEX,
     )

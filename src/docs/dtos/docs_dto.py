@@ -4,6 +4,7 @@ import uuid
 
 from pydantic import BaseModel, Field
 from base.dto import SnakeToCamelBaseModel
+from docs.models.doc_model import DocStatus
 
 __all__ = [
     "GetUploadUrlRequest",
@@ -12,7 +13,8 @@ __all__ = [
     "PresignedUrlDto",
     "IndexDocsParams",
     "SearchDocsRequest",
-    "SearchDocs",
+    "GetDocRequest",
+    "DocResponse",
 ]
 
 
@@ -69,3 +71,14 @@ class SearchDocsResponse(SnakeToCamelBaseModel):
     @staticmethod
     def of(docs: list[SearchDoc]) -> SearchDocsResponse:
         return SearchDocsResponse(docs=docs)
+
+class GetDocRequest(SnakeToCamelBaseModel):
+    doc_id: uuid.UUID
+
+
+class DocResponse(SnakeToCamelBaseModel):
+    doc_id: uuid.UUID
+    name: str
+    size: int
+    extension: str
+    status: DocStatus

@@ -1,6 +1,6 @@
 from typing import Annotated
 from dependency_injector.wiring import Provide, inject
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 
 from base.openapi import generate_responses
 from clients.s3.exceptions import FailToGeneratePresignedUrlError
@@ -10,6 +10,8 @@ from docs.exceptions import (
 )
 from docs.services.doc_reader import DocReader
 from .dtos.docs_dto import (
+    DocResponse,
+    GetDocRequest,
     GetUploadUrlMetadata,
     GetUploadUrlRequest,
     GetUploadUrlResponse,
@@ -21,6 +23,21 @@ from .services.doc_uploader import DocUploader
 
 
 router = APIRouter(prefix="/api/v1/docs", tags=["docs"])
+
+
+@router.post("", response_model=DocResponse)
+@inject
+async def get_doc(
+    request: GetDocRequest,
+    doc_reader: Annotated[DocReader, Depends(Provide[Container.doc_reader])],
+) -> DocResponse:
+    doc = await doc_reader.get_doc(request.doc_id)
+    if not doc:
+        raise HTTPException(status_code=404, detail="Doc not found")
+
+    return DocResponse(
+        doc_id=doc.id, name=doc.name, size=doc.size, extension=doc.extension, status=doc.status,
+    )
 
 
 @router.post(
