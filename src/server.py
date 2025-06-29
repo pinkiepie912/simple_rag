@@ -5,6 +5,8 @@ from elasticsearch import AsyncElasticsearch, ConnectionError as ESConnectionErr
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+import celery_app
+
 from base.api_exception import APIException, api_exception_handler
 from clients.elasticsearch.schema import DocSchema
 from config.config import Config
@@ -55,6 +57,7 @@ def create_app() -> FastAPI:
 
     app = FastAPI(lifespan=lifespan)
     app.state.container = container
+    app.state.celery_app = celery_app
     app.add_exception_handler(APIException, api_exception_handler)
 
     app.include_router(docs_router)
