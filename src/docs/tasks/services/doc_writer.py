@@ -8,7 +8,6 @@ from llama_index.core.node_parser import SentenceSplitter
 from llama_index.core.readers.base import BaseReader
 from llama_index.readers.file import (
     PDFReader,
-    PptxReader,
     DocxReader,
     FlatReader,
     HWPReader,
@@ -24,6 +23,7 @@ from docs.exceptions import NotAllowedExtensionError
 from clients.elasticsearch.schema import DocMetadata, DocSchema
 from docs.models.doc_model import DocStatus, Docs
 from docs.tasks.clients.es_task import EsTaskClient
+from docs.tasks.readers.ppt import PptReader
 from docs.tasks.repositories.doc_task_repository import DocTaskRepository
 from docs.tasks.types import IndexDocTaskType
 
@@ -174,11 +174,11 @@ class DocWriter:
         self._validate_extension(ext)
 
         READER_MAP = {
-            "pptx": PptxReader,
+            "pptx": PptReader,
             "docx": DocxReader,
             "pdf": PDFReader,
             "txt": FlatReader,
-            "ppt": PptxReader,
+            "ppt": PptReader,
             "doc": DocxReader,
             "hwp": HWPReader,
             "hwpx": HWPReader,
