@@ -19,7 +19,14 @@ class DocStatus(Enum):
     UPLOADED = "uploaded"
     INDEXING = "indexing"
     INDEXED = "indexed"
-    FILE_ERROR = "file_error"
+
+    UPLOAD_FAILED = "upload_failed"
+    DOWNLOAD_FAILED = "download_failed"
+    READ_FAILED = "file_read_failed"
+    SPLITTING_FAILED = "splitting_failed"
+    INDEXING_FAILED = "indexing_failed"
+
+    RETRYING = "retrying"
 
 
 class Docs(Base):
@@ -32,6 +39,8 @@ class Docs(Base):
     status: Mapped[str] = mapped_column(
         String(32), nullable=False, default=DocStatus.UPLOAD_REQUESTED.value
     )
+    bucket: Mapped[str] = mapped_column(String(64), nullable=False)
+    key: Mapped[str] = mapped_column(String(64), nullable=False)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), default=get_utc_now
     )
@@ -40,10 +49,9 @@ class Docs(Base):
     )
 
     @staticmethod
-    def of(id: UUID, name: str, size: int, extension: str) -> Docs:
+    def of(
+        id: UUID, name: str, size: int, extension: str, bucket: str, key: str
+    ) -> Docs:
         return Docs(
-            id=id,
-            name=name,
-            size=size,
-            extension=extension,
+            id=id, name=name, size=size, extension=extension, bucket=bucket, key=key
         )

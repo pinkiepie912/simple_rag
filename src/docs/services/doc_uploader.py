@@ -62,12 +62,13 @@ class DocUploader:
             name=filename,
             size=size_byte,
             extension=ext,
+            bucket=self.bucket_name,
+            key=key,
         )
         async with self.write_session_manager as write_session:
             self.repo.create_doc(write_session, new_doc)
 
         return PresignedUrlDto(url=presigned_url, doc_id=doc_id)
-
 
     def _validate_extension(self, ext: str):
         if ext not in self.allowed_extensions:
