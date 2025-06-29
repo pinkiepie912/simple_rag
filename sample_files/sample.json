@@ -1,0 +1,902 @@
+[
+  {
+    "id": 1,
+    "name": "Snyder LLC AI",
+    "category": "번역",
+    "description": "Past response carry listen fast subject list western shoulder yet almost turn vote policy.",
+    "url": "http://www.mendoza-brown.biz/",
+    "free_plan": true,
+    "recommended_for": "1인 창업가"
+  },
+  {
+    "id": 2,
+    "name": "Dawson, Vega and Ray AI",
+    "category": "이미지 생성",
+    "description": "North or plan adult or employee throw administration contain forward affect nearly check success save become.",
+    "url": "http://www.leonard-stanley.com/",
+    "free_plan": true,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 3,
+    "name": "Lane, Rangel and Webb AI",
+    "category": "프레젠테이션",
+    "description": "Soon information population consider likely while born word professional lot become analysis under.",
+    "url": "https://www.brown-smith.org/",
+    "free_plan": true,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 4,
+    "name": "Herrera and Sons AI",
+    "category": "슬라이드 생성",
+    "description": "Fill whom work manager of win federal peace wide.",
+    "url": "http://www.moran.info/",
+    "free_plan": true,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 5,
+    "name": "Horton Inc AI",
+    "category": "코드 보조",
+    "description": "Nice case difference everyone focus ability trip stage for assume still five tell mind once shoulder.",
+    "url": "http://morris.com/",
+    "free_plan": true,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 6,
+    "name": "Schmidt-Shelton AI",
+    "category": "프레젠테이션",
+    "description": "Including speak grow some physical thought price.",
+    "url": "http://gates-pierce.org/",
+    "free_plan": false,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 7,
+    "name": "Davis, Martinez and Butler AI",
+    "category": "채팅봇",
+    "description": "Source learn heart out item analysis role decision already test cover bit assume tonight.",
+    "url": "http://www.morris.com/",
+    "free_plan": false,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 8,
+    "name": "Mendoza-Mclaughlin AI",
+    "category": "문서 작성",
+    "description": "Morning sure scene view lot rest great note public budget adult research.",
+    "url": "https://www.adams.com/",
+    "free_plan": true,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 9,
+    "name": "Sims Inc AI",
+    "category": "고객 지원",
+    "description": "Reason interesting own right society turn generation student whole nothing.",
+    "url": "https://www.gregory.com/",
+    "free_plan": false,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 10,
+    "name": "Long LLC AI",
+    "category": "SNS 관리",
+    "description": "Notice investment shoulder financial successful politics must send newspaper main their.",
+    "url": "http://holmes.com/",
+    "free_plan": false,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 11,
+    "name": "Anderson, Mcknight and Wall AI",
+    "category": "프레젠테이션",
+    "description": "Magazine arrive growth beyond parent follow crime level.",
+    "url": "https://dyer.com/",
+    "free_plan": false,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 12,
+    "name": "Reyes-Hernandez AI",
+    "category": "채팅봇",
+    "description": "Free speak third book practice statement already start short.",
+    "url": "https://martinez-johnson.net/",
+    "free_plan": false,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 13,
+    "name": "Burns-Miller AI",
+    "category": "슬라이드 생성",
+    "description": "Read tell indicate since industry stop which hand station prove single.",
+    "url": "https://www.lopez-gonzales.biz/",
+    "free_plan": true,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 14,
+    "name": "Lawson, Cole and Oliver AI",
+    "category": "SNS 관리",
+    "description": "Remember section someone perhaps cause thing better trouble set few.",
+    "url": "http://carrillo.org/",
+    "free_plan": true,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 15,
+    "name": "Carrillo-Diaz AI",
+    "category": "데이터 분석",
+    "description": "Me whole put energy threat mother eye lead receive site teacher.",
+    "url": "http://chang.com/",
+    "free_plan": false,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 16,
+    "name": "Young-Wilcox AI",
+    "category": "음성 인식",
+    "description": "Whole measure let bill poor daughter serious century matter.",
+    "url": "http://www.brooks.com/",
+    "free_plan": false,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 17,
+    "name": "Moore LLC AI",
+    "category": "UX 리서치",
+    "description": "Our instead possible available measure will analysis similar table subject either measure Democrat service million.",
+    "url": "http://www.harris.net/",
+    "free_plan": false,
+    "recommended_for": "마케터"
+  },
+  {
+    "id": 18,
+    "name": "Davis-Donovan AI",
+    "category": "프레젠테이션",
+    "description": "Inside fall sea above area however purpose conference husband foot occur.",
+    "url": "https://hess.com/",
+    "free_plan": true,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 19,
+    "name": "Miller, Moore and Moore AI",
+    "category": "마케팅 자동화",
+    "description": "Role while door how soldier situation drive.",
+    "url": "https://www.vaughn.info/",
+    "free_plan": true,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 20,
+    "name": "Pugh, Gilmore and Dawson AI",
+    "category": "메일 자동화",
+    "description": "Property protect none send throughout enjoy today member thought find reach yes throw partner network professional.",
+    "url": "http://mcdonald.com/",
+    "free_plan": false,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 21,
+    "name": "Johnson, Brown and Smith AI",
+    "category": "데이터 분석",
+    "description": "Its middle operation keep provide require most mouth.",
+    "url": "https://www.kerr.biz/",
+    "free_plan": true,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 22,
+    "name": "Johnson-Flores AI",
+    "category": "영상 편집",
+    "description": "Study color meet foreign life whole we indeed.",
+    "url": "https://mata.com/",
+    "free_plan": false,
+    "recommended_for": "1인 창업가"
+  },
+  {
+    "id": 23,
+    "name": "Nielsen-Davidson AI",
+    "category": "데이터 분석",
+    "description": "See perform want of recently road under accept.",
+    "url": "https://www.welch-moore.org/",
+    "free_plan": true,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 24,
+    "name": "Hebert, Bailey and Nguyen AI",
+    "category": "노코드 개발",
+    "description": "Way allow he early focus might partner as financial what manage challenge piece oil test.",
+    "url": "https://www.harris.info/",
+    "free_plan": false,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 25,
+    "name": "Mills-Pittman AI",
+    "category": "고객 지원",
+    "description": "Plant data letter baby likely game during statement as hope.",
+    "url": "http://www.johnson.info/",
+    "free_plan": true,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 26,
+    "name": "Mcneil, James and Christensen AI",
+    "category": "UX 리서치",
+    "description": "Fall action year million drug become school which power should.",
+    "url": "https://www.hancock-hudson.com/",
+    "free_plan": false,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 27,
+    "name": "Burns Group AI",
+    "category": "회의 요약",
+    "description": "In two rate peace could be program.",
+    "url": "https://www.howard.com/",
+    "free_plan": true,
+    "recommended_for": "1인 창업가"
+  },
+  {
+    "id": 28,
+    "name": "Osborn PLC AI",
+    "category": "검색 최적화",
+    "description": "Why expect nor list another it respond arm remain animal skill yes art evidence director.",
+    "url": "https://www.brown-rivera.com/",
+    "free_plan": true,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 29,
+    "name": "Williams-Roberts AI",
+    "category": "SNS 관리",
+    "description": "Develop develop husband gun hour down father charge interesting.",
+    "url": "https://kelly.info/",
+    "free_plan": true,
+    "recommended_for": "1인 창업가"
+  },
+  {
+    "id": 30,
+    "name": "Young, Ramirez and Walker AI",
+    "category": "채팅봇",
+    "description": "Actually under approach mean situation news else including concern.",
+    "url": "https://www.davis-gibson.info/",
+    "free_plan": false,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 31,
+    "name": "Walters-Welch AI",
+    "category": "마케팅 자동화",
+    "description": "Walk fund become sort public find may low according raise improve.",
+    "url": "https://www.foster-alvarado.info/",
+    "free_plan": false,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 32,
+    "name": "Zamora and Sons AI",
+    "category": "코드 보조",
+    "description": "Play record him tell price require one.",
+    "url": "https://miller.org/",
+    "free_plan": false,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 33,
+    "name": "Perez and Sons AI",
+    "category": "번역",
+    "description": "Model land for hear federal either general worry only huge garden discuss positive.",
+    "url": "http://miller.biz/",
+    "free_plan": true,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 34,
+    "name": "Scott, Simmons and Williams AI",
+    "category": "교육",
+    "description": "Hold list enjoy same often main myself.",
+    "url": "http://newman.com/",
+    "free_plan": false,
+    "recommended_for": "마케터"
+  },
+  {
+    "id": 35,
+    "name": "Maynard, Wheeler and Nelson AI",
+    "category": "UX 리서치",
+    "description": "Page subject then left social Republican however cell quickly situation.",
+    "url": "http://brown.com/",
+    "free_plan": false,
+    "recommended_for": "1인 창업가"
+  },
+  {
+    "id": 36,
+    "name": "Nguyen and Sons AI",
+    "category": "문서 작성",
+    "description": "Wish second likely country other doctor require.",
+    "url": "https://www.mason.org/",
+    "free_plan": false,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 37,
+    "name": "Rodriguez, Hicks and Smith AI",
+    "category": "슬라이드 생성",
+    "description": "We reflect now bank together administration war class position else crime where.",
+    "url": "https://sutton.info/",
+    "free_plan": true,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 38,
+    "name": "Thomas-Moore AI",
+    "category": "데이터 분석",
+    "description": "Man light environment painting organization audience cut job free a character.",
+    "url": "http://www.anderson.com/",
+    "free_plan": true,
+    "recommended_for": "1인 창업가"
+  },
+  {
+    "id": 39,
+    "name": "Carlson, Bonilla and Wright AI",
+    "category": "프레젠테이션",
+    "description": "Prepare rest brother newspaper water run hand recent performance read.",
+    "url": "https://scott.net/",
+    "free_plan": true,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 40,
+    "name": "Booker-Kennedy AI",
+    "category": "노코드 개발",
+    "description": "Girl describe continue model many boy authority scientist good.",
+    "url": "https://trevino.com/",
+    "free_plan": true,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 41,
+    "name": "Smith-Jones AI",
+    "category": "고객 지원",
+    "description": "Down within career what walk consider it church notice including food glass always black your language.",
+    "url": "http://williams.com/",
+    "free_plan": true,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 42,
+    "name": "Obrien, Barajas and Walls AI",
+    "category": "음성 인식",
+    "description": "We campaign bad within individual night role teach.",
+    "url": "https://www.torres-pearson.biz/",
+    "free_plan": true,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 43,
+    "name": "Santana, Rice and Davis AI",
+    "category": "SNS 관리",
+    "description": "Run such eight bank forget skin science dark take know week.",
+    "url": "http://wood.biz/",
+    "free_plan": true,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 44,
+    "name": "Hunter PLC AI",
+    "category": "고객 지원",
+    "description": "All season who radio kind near ball environmental same.",
+    "url": "https://www.moore-rios.com/",
+    "free_plan": true,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 45,
+    "name": "Rodriguez and Sons AI",
+    "category": "이미지 생성",
+    "description": "Window push participant of drop industry six east cause indeed reason act.",
+    "url": "http://www.fisher-calderon.com/",
+    "free_plan": false,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 46,
+    "name": "Mack and Sons AI",
+    "category": "프레젠테이션",
+    "description": "Time line white finish contain technology chance positive clear nice similar soon result.",
+    "url": "https://www.williamson.net/",
+    "free_plan": false,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 47,
+    "name": "Turner, Garrett and Hill AI",
+    "category": "이미지 생성",
+    "description": "Figure draw statement piece under be follow community discussion.",
+    "url": "http://jackson.com/",
+    "free_plan": false,
+    "recommended_for": "마케터"
+  },
+  {
+    "id": 48,
+    "name": "Fernandez-Medina AI",
+    "category": "슬라이드 생성",
+    "description": "Will instead toward price entire night thus though pay.",
+    "url": "https://hamilton.com/",
+    "free_plan": false,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 49,
+    "name": "Collins LLC AI",
+    "category": "메일 자동화",
+    "description": "Special provide federal such message pick outside least nor one nothing language.",
+    "url": "https://www.shaffer.net/",
+    "free_plan": true,
+    "recommended_for": "마케터"
+  },
+  {
+    "id": 50,
+    "name": "French, Smith and Ross AI",
+    "category": "프레젠테이션",
+    "description": "Fact defense represent above family toward will set.",
+    "url": "http://gould.com/",
+    "free_plan": false,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 51,
+    "name": "Smith, Cardenas and Gonzalez AI",
+    "category": "검색 최적화",
+    "description": "Treat past apply work top save minute image something mission PM available too above.",
+    "url": "http://sanchez-butler.com/",
+    "free_plan": true,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 52,
+    "name": "Carroll and Sons AI",
+    "category": "메일 자동화",
+    "description": "Reveal head until too now not including still year let measure seven dream say nice.",
+    "url": "https://kirby.com/",
+    "free_plan": false,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 53,
+    "name": "Taylor-Morgan AI",
+    "category": "고객 지원",
+    "description": "Garden forward nation marriage education method seven during particular finish more.",
+    "url": "https://www.gonzales.com/",
+    "free_plan": true,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 54,
+    "name": "Hubbard-Roth AI",
+    "category": "마케팅 자동화",
+    "description": "Discuss history customer recent energy responsibility operation television respond usually job list rich.",
+    "url": "https://henry-hernandez.org/",
+    "free_plan": false,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 55,
+    "name": "Hanna-Hughes AI",
+    "category": "UX 리서치",
+    "description": "Then trip trade trade significant campaign debate against piece song couple question because.",
+    "url": "https://butler.org/",
+    "free_plan": false,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 56,
+    "name": "Mcgee Inc AI",
+    "category": "UX 리서치",
+    "description": "Green worry fear find fund president source must fire win.",
+    "url": "http://salazar.info/",
+    "free_plan": false,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 57,
+    "name": "Allen, Gould and Ramirez AI",
+    "category": "회의 요약",
+    "description": "Beautiful military decide protect source through door red tough return development note from its line.",
+    "url": "http://bowers.com/",
+    "free_plan": true,
+    "recommended_for": "1인 창업가"
+  },
+  {
+    "id": 58,
+    "name": "Erickson-Burns AI",
+    "category": "번역",
+    "description": "Down voice evening ok quality training off life position reach remain share happen.",
+    "url": "http://www.williams-patterson.net/",
+    "free_plan": true,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 59,
+    "name": "Johnson-Harris AI",
+    "category": "노코드 개발",
+    "description": "I he store attorney address lead hold admit impact chair include send.",
+    "url": "http://nash.com/",
+    "free_plan": true,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 60,
+    "name": "Richardson PLC AI",
+    "category": "데이터 분석",
+    "description": "Term seven accept look south establish job effort final anything.",
+    "url": "http://www.trujillo.net/",
+    "free_plan": true,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 61,
+    "name": "Ewing, Jones and Murphy AI",
+    "category": "SNS 관리",
+    "description": "Scientist two decide hundred everybody any opportunity hundred light particularly.",
+    "url": "https://www.valdez.com/",
+    "free_plan": true,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 62,
+    "name": "Johnson-Booth AI",
+    "category": "메일 자동화",
+    "description": "Recent wish price choice among trouble oil once trip case.",
+    "url": "https://walker.com/",
+    "free_plan": false,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 63,
+    "name": "Thompson, Tate and Vargas AI",
+    "category": "메일 자동화",
+    "description": "Call east role why five whether win anyone mind.",
+    "url": "http://anderson.com/",
+    "free_plan": true,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 64,
+    "name": "Rhodes LLC AI",
+    "category": "채팅봇",
+    "description": "Including despite which fund grow bed remain.",
+    "url": "http://herrera.com/",
+    "free_plan": true,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 65,
+    "name": "Hall Inc AI",
+    "category": "일정 관리",
+    "description": "Office out none affect final attack sit show.",
+    "url": "https://ferrell.com/",
+    "free_plan": true,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 66,
+    "name": "Heath-Davis AI",
+    "category": "SNS 관리",
+    "description": "Agreement finish process experience share weight especially heart grow.",
+    "url": "https://www.lopez.com/",
+    "free_plan": false,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 67,
+    "name": "Lewis Inc AI",
+    "category": "UX 리서치",
+    "description": "Sound their season we picture trial wait factor range whole surface civil letter another.",
+    "url": "http://www.coleman-bean.com/",
+    "free_plan": false,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 68,
+    "name": "Baker, Walker and Wagner AI",
+    "category": "SNS 관리",
+    "description": "Magazine peace our performance PM your huge car tell beyond fish to better around picture.",
+    "url": "http://www.gregory.com/",
+    "free_plan": true,
+    "recommended_for": "1인 창업가"
+  },
+  {
+    "id": 69,
+    "name": "Buck-Fritz AI",
+    "category": "노코드 개발",
+    "description": "Firm beyond above space foot appear she class blue same any art trip become sign media.",
+    "url": "http://www.garcia-nash.com/",
+    "free_plan": true,
+    "recommended_for": "마케터"
+  },
+  {
+    "id": 70,
+    "name": "James-Blackburn AI",
+    "category": "번역",
+    "description": "Stand TV after financial real amount read.",
+    "url": "http://www.george-singh.com/",
+    "free_plan": true,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 71,
+    "name": "Garcia PLC AI",
+    "category": "프레젠테이션",
+    "description": "Answer clearly wonder home performance heart politics former.",
+    "url": "http://garcia.com/",
+    "free_plan": false,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 72,
+    "name": "Robbins-Newman AI",
+    "category": "검색 최적화",
+    "description": "Green ten white color poor likely him represent both.",
+    "url": "http://knapp.biz/",
+    "free_plan": true,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 73,
+    "name": "Holt-Hughes AI",
+    "category": "프레젠테이션",
+    "description": "Discussion full ago industry listen father sort still maybe.",
+    "url": "https://www.zavala-glover.com/",
+    "free_plan": false,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 74,
+    "name": "Mcfarland-Glover AI",
+    "category": "코드 보조",
+    "description": "Under list wife benefit study as possible assume college receive.",
+    "url": "https://ford.com/",
+    "free_plan": false,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 75,
+    "name": "Meadows, Black and Brown AI",
+    "category": "일정 관리",
+    "description": "Reason growth task treat involve call author why interview.",
+    "url": "http://www.perez.com/",
+    "free_plan": false,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 76,
+    "name": "Velazquez-Page AI",
+    "category": "회의 요약",
+    "description": "Value section improve attention in who analysis hope leg break.",
+    "url": "http://www.morales.org/",
+    "free_plan": true,
+    "recommended_for": "1인 창업가"
+  },
+  {
+    "id": 77,
+    "name": "Hatfield, Ortiz and Daniel AI",
+    "category": "일정 관리",
+    "description": "Guess free present break address accept poor production raise drug add.",
+    "url": "http://castro.com/",
+    "free_plan": false,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 78,
+    "name": "Kim Ltd AI",
+    "category": "노코드 개발",
+    "description": "High say how table why also different hospital.",
+    "url": "http://www.lee-cline.com/",
+    "free_plan": false,
+    "recommended_for": "1인 창업가"
+  },
+  {
+    "id": 79,
+    "name": "Charles-Martinez AI",
+    "category": "채팅봇",
+    "description": "Should happen trip likely seat section left action condition.",
+    "url": "https://murray-potter.com/",
+    "free_plan": false,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 80,
+    "name": "Jenkins, Pope and Sherman AI",
+    "category": "SNS 관리",
+    "description": "Of group evidence something instead eye reason some from member lay my.",
+    "url": "https://www.jones.com/",
+    "free_plan": true,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 81,
+    "name": "Miller-Daniels AI",
+    "category": "이미지 생성",
+    "description": "Two local citizen do reach time song about someone loss kind.",
+    "url": "http://www.griffin-noble.org/",
+    "free_plan": true,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 82,
+    "name": "Leblanc, Hull and Moreno AI",
+    "category": "회의 요약",
+    "description": "Task in create billion cover carry during increase police stay event live response election hope just.",
+    "url": "https://www.martinez.com/",
+    "free_plan": true,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 83,
+    "name": "Nguyen and Sons AI",
+    "category": "이미지 생성",
+    "description": "Table person simply employee fish Republican remain respond.",
+    "url": "http://hughes.net/",
+    "free_plan": false,
+    "recommended_for": "1인 창업가"
+  },
+  {
+    "id": 84,
+    "name": "Carroll, Smith and Wade AI",
+    "category": "슬라이드 생성",
+    "description": "Happen walk ten he stuff class quite analysis newspaper degree their south last another world.",
+    "url": "https://banks-jones.com/",
+    "free_plan": true,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 85,
+    "name": "Sloan Group AI",
+    "category": "음성 인식",
+    "description": "Later already medical thank claim how structure.",
+    "url": "https://richardson.info/",
+    "free_plan": true,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 86,
+    "name": "Kelly, Buckley and Long AI",
+    "category": "프레젠테이션",
+    "description": "Ago trip strong like teach act attorney live left.",
+    "url": "https://www.hall.com/",
+    "free_plan": true,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 87,
+    "name": "Allen, Werner and Contreras AI",
+    "category": "이미지 생성",
+    "description": "Quite represent until sing marriage lay house since rise Mrs out difference.",
+    "url": "http://www.lawrence.net/",
+    "free_plan": false,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 88,
+    "name": "Banks, Cowan and Lara AI",
+    "category": "마케팅 자동화",
+    "description": "Money rest born foreign future nearly person green federal sea certainly spend.",
+    "url": "https://www.thompson-conrad.com/",
+    "free_plan": false,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 89,
+    "name": "Nelson LLC AI",
+    "category": "고객 지원",
+    "description": "Store throughout charge seven feeling never people risk factor or probably hospital treat.",
+    "url": "https://www.strong.com/",
+    "free_plan": false,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 90,
+    "name": "Herrera and Sons AI",
+    "category": "교육",
+    "description": "Between across capital any summer pick campaign example class writer left car.",
+    "url": "https://www.allen.org/",
+    "free_plan": true,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 91,
+    "name": "Ballard, Bond and Ortega AI",
+    "category": "메일 자동화",
+    "description": "Character good tell something age risk draw production direction have indicate candidate keep three measure decision.",
+    "url": "https://best-mann.com/",
+    "free_plan": false,
+    "recommended_for": "마케터"
+  },
+  {
+    "id": 92,
+    "name": "Larson Ltd AI",
+    "category": "데이터 분석",
+    "description": "Other note morning American least part they will vote feeling thing yard office example summer.",
+    "url": "http://www.deleon.com/",
+    "free_plan": true,
+    "recommended_for": "마케터"
+  },
+  {
+    "id": 93,
+    "name": "Butler-Stokes AI",
+    "category": "회의 요약",
+    "description": "Bed party night space play without small agency church very local pick choose vote school.",
+    "url": "https://moore-morrison.com/",
+    "free_plan": false,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 94,
+    "name": "Mcintyre, Johnson and Harris AI",
+    "category": "UX 리서치",
+    "description": "White nation language beautiful whom not cultural he speech media story learn close create go.",
+    "url": "http://www.arroyo.net/",
+    "free_plan": true,
+    "recommended_for": "기획자"
+  },
+  {
+    "id": 95,
+    "name": "Martinez, Carlson and Ramirez AI",
+    "category": "데이터 분석",
+    "description": "Possible safe threat true less since series professor effect what key account.",
+    "url": "http://peterson.com/",
+    "free_plan": false,
+    "recommended_for": "마케터"
+  },
+  {
+    "id": 96,
+    "name": "Gomez, Hinton and Reid AI",
+    "category": "슬라이드 생성",
+    "description": "Sell decision well where east serious include public institution true bank method continue they about write.",
+    "url": "http://cook.net/",
+    "free_plan": false,
+    "recommended_for": "교육자"
+  },
+  {
+    "id": 97,
+    "name": "Clark Inc AI",
+    "category": "회의 요약",
+    "description": "Half spring check language nor reason remember.",
+    "url": "http://holland.com/",
+    "free_plan": true,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 98,
+    "name": "Watson-Velasquez AI",
+    "category": "검색 최적화",
+    "description": "Voice off material break fly store media among table gun difference environment join.",
+    "url": "http://ramirez.info/",
+    "free_plan": false,
+    "recommended_for": "개발자"
+  },
+  {
+    "id": 99,
+    "name": "Rodriguez-Peters AI",
+    "category": "프레젠테이션",
+    "description": "Thousand only well conference factor plan too trouble push know attack.",
+    "url": "https://ramirez.info/",
+    "free_plan": true,
+    "recommended_for": "디자이너"
+  },
+  {
+    "id": 100,
+    "name": "Hendricks and Sons AI",
+    "category": "슬라이드 생성",
+    "description": "Key they style me wrong point national region probably could too his part line close responsibility.",
+    "url": "http://www.edwards-johnson.info/",
+    "free_plan": true,
+    "recommended_for": "개발자"
+  }
+]
