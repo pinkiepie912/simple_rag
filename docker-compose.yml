@@ -22,6 +22,31 @@ services:
     networks:
       - local_net 
 
+  beat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: beat 
+    command: >
+      watchmedo auto-restart
+        --directory='.'
+        --pattern='*.py'
+        --recursive
+        --
+        celery -A src.celery_app beat --loglevel=info
+    volumes:
+      - ./src:/app/src
+    env_file:
+      - .env
+    depends_on:
+      - es_n1
+      - es_n2
+      - redis
+      - localstack
+      - db
+    networks:
+      - local_net 
+
   worker:
     build:
       context: .

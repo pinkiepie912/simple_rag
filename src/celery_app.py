@@ -5,6 +5,7 @@ from celery import Celery
 from celery.signals import worker_process_init, worker_process_shutdown
 
 from celery_containers import CeleryContainer
+from celery_schedule import CELERY_SCHEDULE
 from config.config import Config
 
 
@@ -53,6 +54,7 @@ def create_celery_app() -> Celery:
         enable_utc=False,
     )
 
+    celery_app.conf.beat_schedule = CELERY_SCHEDULE
     celery_app.container = container
 
     @worker_process_init.connect(sender=celery_app)
