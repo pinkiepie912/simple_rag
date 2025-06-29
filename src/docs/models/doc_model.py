@@ -15,18 +15,18 @@ __all__ = ["Docs", "DocStatus"]
 
 
 class DocStatus(Enum):
-    UPLOAD_REQUESTED = "upload_requested"
-    UPLOADED = "uploaded"
-    INDEXING = "indexing"
-    INDEXED = "indexed"
+    UPLOAD_REQUESTED = "UPLOAD_REQUESTED"
+    UPLOADED = "UPLOADED"
+    INDEXING = "INDEXING"
+    INDEXED = "INDEXED"
 
-    UPLOAD_FAILED = "upload_failed"
-    DOWNLOAD_FAILED = "download_failed"
-    READ_FAILED = "file_read_failed"
-    SPLITTING_FAILED = "splitting_failed"
-    INDEXING_FAILED = "indexing_failed"
+    UPLOAD_FAILED = "UPLOAD_FAILED"
+    DOWNLOAD_FAILED = "DOWNLOAD_FAILED"
+    READ_FAILED = "FILE_READ_FAILED"
+    SPLITTING_FAILED = "SPLITTING_FAILED"
+    INDEXING_FAILED = "INDEXING_FAILED"
 
-    RETRYING = "retrying"
+    RETRYING = "RETRYING"
 
 
 class Docs(Base):
