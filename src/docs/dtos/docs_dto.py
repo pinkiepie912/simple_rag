@@ -65,12 +65,14 @@ class SearchDoc(SnakeToCamelBaseModel):
     def of(doc_id: uuid.UUID, content: str) -> SearchDoc:
         return SearchDoc(doc_id=doc_id, content=content)
 
+
 class SearchDocsResponse(SnakeToCamelBaseModel):
     docs: list[SearchDoc]
 
     @staticmethod
     def of(docs: list[SearchDoc]) -> SearchDocsResponse:
         return SearchDocsResponse(docs=docs)
+
 
 class GetDocRequest(SnakeToCamelBaseModel):
     doc_id: uuid.UUID

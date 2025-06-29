@@ -37,8 +37,8 @@ class Docs(Base):
     size: Mapped[int] = mapped_column(nullable=False, comment="bytes")
     extension: Mapped[str] = mapped_column(String(16), nullable=False)
     status: Mapped[DocStatus] = mapped_column(
-        SAEnum(DocStatus, native_enum=False, length=32), 
-        default=DocStatus.UPLOAD_REQUESTED, 
+        SAEnum(DocStatus, native_enum=False, length=32),
+        default=DocStatus.UPLOAD_REQUESTED,
         nullable=False,
     )
 

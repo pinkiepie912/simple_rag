@@ -36,7 +36,11 @@ async def get_doc(
         raise HTTPException(status_code=404, detail="Doc not found")
 
     return DocResponse(
-        doc_id=doc.id, name=doc.name, size=doc.size, extension=doc.extension, status=doc.status,
+        doc_id=doc.id,
+        name=doc.name,
+        size=doc.size,
+        extension=doc.extension,
+        status=doc.status,
     )
 
 
